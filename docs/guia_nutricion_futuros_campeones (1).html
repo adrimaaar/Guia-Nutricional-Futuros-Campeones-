@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrir a los Futuros Campeones · Guía de Nutrición Deportiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --verde:#2fae60; --verde-osc:#1e7a42; --naranja:#ff8a3c; --naranja-osc:#e86b1a;
+ --azul:#2f9bd4; --azul-osc:#1b6e9a; --morado:#7c5cd6; --rojo:#e8524a; --amarillo:#ffc43d;
+ --tinta:#1f2a37; --gris:#5b6b7b; --crema:#fff8ef; --blanco:#ffffff;
+ --sombra:0 10px 30px rgba(31,42,55,.10); --sombra2:0 18px 50px rgba(31,42,55,.16);
+ --rad:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--tinta);background:var(--crema);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:84px 0;position:relative}
+.badge{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:18px}
+.sec-title{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin-bottom:14px}
+.sec-sub{font-size:1.08rem;color:var(--gris);max-width:760px;margin-bottom:46px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,248,239,.9);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(31,42,55,.06);transition:.3s}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Poppins';font-weight:800;font-size:1.15rem}
+.logo .dot{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--verde),var(--naranja));display:grid;place-items:center;color:#fff;font-size:1.2rem}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{font-weight:700;font-size:.92rem;padding:9px 13px;border-radius:12px;color:var(--gris);transition:.2s}
+.nav-links a:hover{color:var(--verde-osc);background:rgba(47,174,96,.1)}
+.burger{display:none;font-size:1.6rem;cursor:pointer;background:none;border:none;color:var(--tinta)}
+@media(max-width:960px){
+ .nav-links{position:fixed;top:68px;left:0;right:0;flex-direction:column;background:var(--crema);padding:14px 22px;gap:4px;box-shadow:var(--sombra);transform:translateY(-150%);transition:.35s;align-items:stretch}
+ .nav-links.open{transform:translateY(0)}
+ .nav-links a{padding:12px 14px}
+ .burger{display:block}
+}
+/* HERO */
+#inicio{padding:150px 0 90px;background:radial-gradient(1200px 600px at 80% -10%,rgba(255,138,60,.18),transparent),radial-gradient(900px 500px at 0% 20%,rgba(47,174,96,.16),transparent)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;margin-bottom:20px}
+.hero h1 .hl{background:linear-gradient(120deg,var(--verde),var(--naranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.15rem;color:var(--gris);margin-bottom:28px;max-width:560px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.tag{background:#fff;border:2px solid rgba(47,174,96,.25);border-radius:999px;padding:8px 16px;font-weight:700;font-size:.9rem;color:var(--verde-osc)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins';font-weight:700;padding:15px 28px;border-radius:14px;transition:.25s;cursor:pointer;border:none;font-size:1rem}
+.btn-main{background:linear-gradient(120deg,var(--verde),var(--verde-osc));color:#fff;box-shadow:0 10px 25px rgba(47,174,96,.35)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(47,174,96,.45)}
+.btn-ghost{background:#fff;color:var(--tinta);box-shadow:var(--sombra)}
+.btn-ghost:hover{transform:translateY(-3px)}
+.hero-img{position:relative}
+.hero-img img{border-radius:28px;box-shadow:var(--sombra2)}
+.hero-img .float{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--sombra);font-weight:800;font-family:'Poppins';display:flex;align-items:center;gap:9px;font-size:.95rem}
+.hero-img .f1{top:-18px;left:-14px;color:var(--verde-osc)}
+.hero-img .f2{bottom:-16px;right:-10px;color:var(--naranja-osc)}
+.hero-img .emo{font-size:1.4rem}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero-img .f1,.hero-img .f2{font-size:.82rem}}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
+.stat{background:#fff;border-radius:var(--rad);padding:26px 20px;text-align:center;box-shadow:var(--sombra);border-top:5px solid var(--verde)}
+.stat:nth-child(2){border-color:var(--naranja)}.stat:nth-child(3){border-color:var(--azul)}.stat:nth-child(4){border-color:var(--morado)}
+.stat .n{font-family:'Poppins';font-weight:800;font-size:2.1rem;color:var(--verde-osc)}
+.stat:nth-child(2) .n{color:var(--naranja-osc)}.stat:nth-child(3) .n{color:var(--azul-osc)}.stat:nth-child(4) .n{color:var(--morado)}
+.stat .l{font-weight:700;color:var(--gris);font-size:.9rem;margin-top:4px}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+/* CARDS GENERIC */
+.cards{display:grid;gap:24px}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.c3,.c2{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:var(--rad);padding:30px;box-shadow:var(--sombra);transition:.28s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sombra2)}
+.card .ico{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;margin-bottom:18px}
+.card h3{font-size:1.35rem;margin-bottom:10px}
+.card p{color:var(--gris)}
+.card ul{list-style:none;margin-top:14px}
+.card ul li{padding:7px 0 7px 28px;position:relative;color:var(--tinta);font-weight:600}
+.card ul li::before{content:'';position:absolute;left:0;top:14px;width:12px;height:12px;border-radius:50%}
+.sec-split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.sec-split img{border-radius:26px;box-shadow:var(--sombra2)}
+@media(max-width:860px){.sec-split{grid-template-columns:1fr;gap:32px}}
+/* color helpers */
+.bg-v{background:rgba(47,174,96,.12);color:var(--verde-osc)}
+.bg-n{background:rgba(255,138,60,.15);color:var(--naranja-osc)}
+.bg-a{background:rgba(47,155,212,.14);color:var(--azul-osc)}
+.bg-m{background:rgba(124,92,214,.14);color:var(--morado)}
+.bg-r{background:rgba(232,82,74,.14);color:var(--rojo)}
+.bg-y{background:rgba(255,196,61,.2);color:#b9820a}
+.dot-v::before{background:var(--verde)}.dot-n::before{background:var(--naranja)}.dot-a::before{background:var(--azul)}.dot-m::before{background:var(--morado)}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:var(--rad);box-shadow:var(--sombra);background:#fff}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:15px 18px;text-align:left}
+thead th{background:linear-gradient(120deg,var(--verde),var(--verde-osc));color:#fff;font-family:'Poppins';font-weight:600;font-size:.92rem}
+tbody tr:nth-child(even){background:var(--crema)}
+tbody td{border-bottom:1px solid #eee;font-weight:600;font-size:.95rem}
+tbody tr:hover{background:rgba(47,174,96,.08)}
+/* MITOS */
+.myth{background:#fff;border-radius:var(--rad);overflow:hidden;box-shadow:var(--sombra);transition:.28s}
+.myth:hover{transform:translateY(-5px);box-shadow:var(--sombra2)}
+.myth .top{background:rgba(232,82,74,.1);padding:22px 24px;border-left:6px solid var(--rojo)}
+.myth .top .lbl{font-weight:800;color:var(--rojo);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.myth .top h3{font-size:1.18rem;margin-top:6px}
+.myth .bot{padding:22px 24px;border-left:6px solid var(--verde)}
+.myth .bot .lbl{font-weight:800;color:var(--verde-osc);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:block}
+.myth .bot p{color:var(--gris)}
+/* TABS */
+.tabs{display:flex;gap:10px;background:#fff;padding:8px;border-radius:16px;box-shadow:var(--sombra);width:fit-content;margin:0 auto 38px;flex-wrap:wrap;justify-content:center}
+.tab{padding:12px 26px;border-radius:12px;font-family:'Poppins';font-weight:700;cursor:pointer;transition:.2s;color:var(--gris);border:none;background:none;font-size:.98rem}
+.tab.active{background:linear-gradient(120deg,var(--naranja),var(--naranja-osc));color:#fff;box-shadow:0 8px 18px rgba(255,138,60,.35)}
+.tab-panel{display:none;animation:fade .4s}
+.tab-panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* TIMELINE */
+.timeline{position:relative;max-width:820px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:4px;background:linear-gradient(var(--verde),var(--azul),var(--naranja));border-radius:4px}
+.tl-item{position:relative;padding:0 0 36px 78px}
+.tl-item .pin{position:absolute;left:8px;top:0;width:42px;height:42px;border-radius:50%;background:#fff;border:4px solid var(--verde);display:grid;place-items:center;font-size:1.2rem;box-shadow:var(--sombra)}
+.tl-item:nth-child(2) .pin{border-color:var(--azul)}.tl-item:nth-child(3) .pin{border-color:var(--naranja)}
+.tl-item .box{background:#fff;border-radius:16px;padding:22px 24px;box-shadow:var(--sombra)}
+.tl-item .box h4{font-size:1.15rem;margin-bottom:6px}
+.tl-item .box p{color:var(--gris);font-size:.96rem}
+/* MEAL */
+.meal{background:#fff;border-radius:18px;box-shadow:var(--sombra);overflow:hidden;transition:.25s}
+.meal:hover{transform:translateY(-5px);box-shadow:var(--sombra2)}
+.meal .mh{padding:18px 22px;color:#fff;font-family:'Poppins';font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.1rem}
+.meal .mb{padding:20px 22px}
+.meal .mb ul{list-style:none}
+.meal .mb li{padding:5px 0 5px 24px;position:relative;color:var(--tinta);font-weight:600;font-size:.95rem}
+.meal .mb li::before{content:'\2713';position:absolute;left:0;color:var(--verde);font-weight:800}
+.meal .prop{margin-top:14px;background:var(--crema);border-radius:12px;padding:12px 16px;font-weight:700;font-size:.88rem;color:var(--gris)}
+.perfiles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:46px}
+@media(max-width:800px){.perfiles{grid-template-columns:1fr}}
+/* HYDRATION bars */
+.hyd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:800px){.hyd-cards{grid-template-columns:1fr}}
+.hyd{background:#fff;border-radius:var(--rad);padding:28px;box-shadow:var(--sombra);text-align:center;border-bottom:6px solid var(--azul)}
+.hyd .big{font-family:'Poppins';font-weight:800;font-size:1.8rem;color:var(--azul-osc);margin:8px 0}
+/* AVOID */
+.avoid-card{background:#fff;border-radius:var(--rad);padding:26px;box-shadow:var(--sombra);border-left:6px solid var(--rojo);transition:.25s}
+.avoid-card:hover{transform:translateY(-5px);box-shadow:var(--sombra2)}
+.avoid-card h3{font-size:1.15rem;margin-bottom:8px;color:var(--rojo)}
+.avoid-card p{color:var(--gris);font-size:.95rem}
+/* FOOTER */
+footer{background:var(--tinta);color:#cdd6e0;padding:60px 0 30px}
+footer .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:800px){footer .fg{grid-template-columns:1fr}}
+footer h4{color:#fff;margin-bottom:16px;font-size:1.05rem}
+footer a{color:#cdd6e0;display:block;padding:4px 0;transition:.2s}
+footer a:hover{color:var(--naranja)}
+footer .copy{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:.9rem;color:#8a98a8}
+.ods{display:inline-flex;align-items:center;gap:10px;background:rgba(47,174,96,.9);color:#fff;padding:10px 18px;border-radius:12px;font-weight:700;font-size:.9rem;margin-top:14px}
+.reveal{opacity:0;transform:translateY(30px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+.alt{background:#fff}
+/* back to top */
+#top{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:linear-gradient(120deg,var(--verde),var(--verde-osc));color:#fff;border:none;font-size:1.4rem;cursor:pointer;box-shadow:var(--sombra2);opacity:0;pointer-events:none;transition:.3s;z-index:900}
+#top.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<nav>
+ <div class="wrap nav-in">
+  <a href="#inicio" class="logo"><span class="dot">⚡</span> Futuros Campeones</a>
+  <button class="burger" id="burger">☰</button>
+  <div class="nav-links" id="navlinks">
+   <a href="#macro">Macros</a>
+   <a href="#micro">Micros</a>
+   <a href="#mitos">Mitos</a>
+   <a href="#plan">Entreno</a>
+   <a href="#diaria">Menús</a>
+   <a href="#hidratacion">Hidratación</a>
+   <a href="#sueno">Sueño</a>
+   <a href="#evitar">Evitar</a>
+   <a href="#matriz">Matriz</a>
+  </div>
+ </div>
+</nav>
+<!-- HERO -->
+<section id="inicio" class="hero">
+ <div class="wrap hero-grid">
+  <div class="reveal">
+   <span class="badge bg-v">PAI / MYP · Bachillerato Internacional</span>
+   <h1>Nutrir a los <span class="hl">Futuros Campeones</span></h1>
+   <p class="lead">Guía de nutrición deportiva y desarrollo físico para jóvenes atletas de <strong>13 a 17 años</strong>. Ciencia real para rendir, crecer y mantenerte sano — lejos de los mitos virales.</p>
+   <div class="hero-tags">
+    <span class="tag">🍎 Macronutrientes</span>
+    <span class="tag">🧪 Micronutrientes</span>
+    <span class="tag">💧 Hidratación</span>
+    <span class="tag">😴 Descanso</span>
+   </div>
+   <div class="btns">
+    <a href="#macro" class="btn btn-main">Explorar la guía →</a>
+    <a href="#mitos" class="btn btn-ghost">🤔 Mitos vs. Ciencia</a>
+   </div>
+   <div class="ods">🌍 ODS 3 ONU · Salud y Bienestar</div>
+  </div>
+  <div class="hero-img reveal">
+   <img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/30f295b6b8c4/hero_nutricion.jpeg?Expires=1793887260&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=DcaU9uk7w1ka0UXGMZUpvRPkkyeIyltN2aJkDrUJ2JPaIKxg72IXjS43Rc14nY7m7%2FxzpvN9fwAVJHuiAQjU0uRWBqcd4Kiq5qlY6sUGX7ix5LUVIoeWcohtmSWbaJs39TBpoEWMWGzXkbk3ThwT8X39Cb%2F5%2BEmdeTovKEGT8j6MMhs%2FaMbSPnmVaY3yQo%2F8JJ7JFsdp%2FotWxFe22OYlRDDQyd%2FBdmSfQqcL0d1vAG65Es04tREbMn0xcRZFBrskU3LUTpQAMCHkoRs8DJpdRXsj2ZN1zU6q10%2FJmemA5B2wl40GveOqQ0cAyMreacADqgyGHpOETXKa2iWogpHx1g%3D%3D" alt="Atletas adolescentes saludables">
+   <div class="float f1"><span class="emo">💪</span> Crece fuerte</div>
+   <div class="float f2"><span class="emo">⚡</span> Rinde al 100%</div>
+  </div>
+ </div>
+ <div class="wrap">
+  <div class="stats">
+   <div class="stat reveal"><div class="n">8-10h</div><div class="l">de sueño por noche</div></div>
+   <div class="stat reveal"><div class="n">60-65%</div><div class="l">del cuerpo es agua</div></div>
+   <div class="stat reveal"><div class="n">2%</div><div class="l">de líquidos ya baja el rendimiento</div></div>
+   <div class="stat reveal"><div class="n">70%</div><div class="l">de hormona de crecimiento al dormir</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- INTRO -->
+<section class="alt" id="intro">
+ <div class="wrap">
+  <div style="text-align:center;max-width:820px;margin:0 auto">
+   <span class="badge bg-n reveal">El problema</span>
+   <h2 class="sec-title reveal">La adolescencia lo cambia todo</h2>
+   <p class="sec-sub reveal" style="margin:0 auto 0">Durante esta etapa el cuerpo vive su mayor explosión de crecimiento. Si a eso le sumas entrenamiento, los requerimientos se <strong>duplican</strong>. Pero TikTok e Instagram están llenos de dietas restrictivas y mitos sin respaldo médico que ponen en riesgo tu salud. Esta guía te da la información rigurosa y fácil de aplicar.</p>
+  </div>
+ </div>
+</section>
+<!-- MACRONUTRIENTES -->
+<section id="macro">
+ <div class="wrap">
+  <div class="sec-split" style="margin-bottom:50px">
+   <div class="reveal">
+    <span class="badge bg-v">Bloque 1</span>
+    <h2 class="sec-title">Macronutrientes</h2>
+    <p class="sec-sub" style="margin-bottom:0">Son los nutrientes que el cuerpo necesita en grandes cantidades para obtener energía, construir tejidos y mantener las funciones vitales. En un atleta adolescente alimentan el entrenamiento <strong>y</strong> el crecimiento.</p>
+   </div>
+   <div class="reveal"><img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/c89c3dd40ba0/macronutrientes.jpeg?Expires=1793887267&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=QrReewuc%2FeXRbI2yoOaak2REo8bKKi%2FVaoa%2BTBPlzGnkFX7ZLh5B4s6SEscDyDkbxHg5d%2F%2BXD%2F5hgwZuUH8FNi9mzwh5LcjH5xNb1VMFPMr8FyDERNzq80X9ziqEjhI3OGcl%2BAp8r9iJNNFt%2Buxn%2FZTK5TKTfzi4dAqfcnMADt8gTFHAVJVg0EY8Wh8%2Fj7AwNMHPNV2G%2Bf7N5FJ7VzQglkYhcWyXOuD7u%2BMKljKjHA%2By6%2FxvJApR1KbSiRJgjioxqd%2F1CrPHhzIObk2I6nRhMaEDVniQalUZP9sXkGDo4UTDKa1w3rR1fDFL655WHfLkxSmNYJY2fDSyoRnynnliNg%3D%3D" alt="Macronutrientes"></div>
+  </div>
+  <div class="cards c3">
+   <div class="card reveal">
+    <div class="ico bg-n">🍚</div>
+    <h3>Carbohidratos</h3>
+    <p>El combustible preferido en ejercicio de media y alta intensidad. Se convierten en glucosa y se guardan como glucógeno en músculos e hígado.</p>
+    <ul>
+     <li class="dot-n"><strong>Complejos (lentos):</strong> avena, arroz integral, camote, papa, pasta, legumbres</li>
+     <li class="dot-n"><strong>Simples (rápidos):</strong> plátano, manzana, miel, dátiles</li>
+     <li class="dot-n">Retrasan la fatiga y mejoran la concentración</li>
+    </ul>
+   </div>
+   <div class="card reveal">
+    <div class="ico bg-v">🥚</div>
+    <h3>Proteínas</h3>
+    <p>Los “bloques de construcción” hechos de aminoácidos. Reparan microlesiones, estimulan la masa muscular y fortalecen las defensas.</p>
+    <ul>
+     <li class="dot-v">Huevos, pollo, pavo, pescado, carne magra</li>
+     <li class="dot-v">Yogur griego, queso fresco</li>
+     <li class="dot-v">Vegetales: soya, lentejas, garbanzos</li>
+     <li class="dot-v"><strong>Clave:</strong> consume proteína tras entrenar</li>
+    </ul>
+   </div>
+   <div class="card reveal">
+    <div class="ico bg-y">🥑</div>
+    <h3>Grasas saludables</h3>
+    <p>Indispensables: protegen órganos, permiten absorber vitaminas A, D, E y K y producen hormonas del crecimiento.</p>
+    <ul>
+     <li class="dot-n">Palta, frutos secos, chía y linaza</li>
+     <li class="dot-n">Aceite de oliva extra virgen</li>
+     <li class="dot-n">Pescados grasos: salmón, atún, bonito</li>
+     <li class="dot-n"><strong>Evita:</strong> frituras y ultraprocesados</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- MICRONUTRIENTES -->
+<section id="micro" class="alt">
+ <div class="wrap">
+  <div class="sec-split" style="margin-bottom:50px">
+   <div class="reveal"><img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/1b95b1240ecd/micronutrientes.jpeg?Expires=1793887277&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=d5SrqhVA8T5g0xg%2F3PaOxIE0qspwnoU4anax80yNUPZIwPnWkHiKbCSCF5i1nK%2F9q6Hr58bvXjgnt62cGfGuX5K7E8SombZ5oDD4jQ6Ky7zziAirfl64B%2B9QZb6TBhZOe5bPfQx8VN7geAfS%2Fev6KnxLrNWORVOeiwU2il2mG5Mz9dvByE8SDum%2FBpix2NmbPAHJHL2aqTNXv0H5QvM0yJTmctqsNHFaWivSR9wZHRGgWEiJZDLG3WeRHkZw2rRDwfDPNTN65u0qfWZVJX65t%2BE%2Bt7XcSWeZl%2BtmIq7OtyWtLExTyXicCCgqCMM5eOs5lRraxXf5vhb9YkQ0qu8Dgg%3D%3D" alt="Micronutrientes"></div>
+   <div class="reveal">
+    <span class="badge bg-a">Bloque 2</span>
+    <h2 class="sec-title">Micronutrientes</h2>
+    <p class="sec-sub" style="margin-bottom:0">No dan calorías, pero regulan miles de reacciones del cuerpo. En pleno estirón puberal, su falta puede <strong>frenar el crecimiento</strong> y acelerar la fatiga.</p>
+   </div>
+  </div>
+  <div class="cards c2" style="margin-bottom:26px">
+   <div class="card reveal"><div class="ico bg-a">🦴</div><h3>Calcio</h3><p>Mineraliza el hueso y permite la contracción muscular. Su déficit aumenta el riesgo de fracturas por estrés.</p><ul><li class="dot-a">Leche, yogur, queso, bebidas fortificadas, ajonjolí, hoja verde</li></ul></div>
+   <div class="card reveal"><div class="ico bg-r">🩸</div><h3>Hierro</h3><p>Lleva oxígeno a los músculos. Los atletas lo demandan más por el aumento de sangre y masa muscular.</p><ul><li class="dot-n">Carnes rojas magras, sangrecita, hígado, lentejas, espinacas (¡con vitamina C!)</li></ul></div>
+   <div class="card reveal"><div class="ico bg-m">⚙️</div><h3>Zinc y Magnesio</h3><p>El zinc arma proteínas e inmunidad; el magnesio regula el músculo y la energía.</p><ul><li class="dot-m">Frutos secos, semillas, avena, mariscos, cacao puro</li></ul></div>
+   <div class="card reveal"><div class="ico bg-y">☀️</div><h3>Vitamina D</h3><p>Trabaja con el calcio para fijar hueso y fuerza. También regula el ánimo y las defensas.</p><ul><li class="dot-n">Sol 15-20 min/día, pescados grasos, yema, fortificados</li></ul></div>
+  </div>
+  <div class="cards c2" style="margin-bottom:40px">
+   <div class="card reveal"><div class="ico bg-v">🔋</div><h3>Complejo B (B1, B6, B12)</h3><p>Coenzimas que convierten carbohidratos, grasas y proteínas en energía (ATP). La B12 cuida el sistema nervioso.</p><ul><li class="dot-v">Cereales integrales, carnes, huevos, legumbres, lácteos</li></ul></div>
+   <div class="card reveal"><div class="ico bg-n">🍊</div><h3>Antioxidantes (C y E)</h3><p>Protegen las células del daño oxidativo del esfuerzo y aceleran la recuperación.</p><ul><li class="dot-n">Cítricos, camu camu, fresas, kiwi, pimientos, almendras, aceite de oliva</li></ul></div>
+  </div>
+  <div class="tbl-wrap reveal">
+   <table>
+    <thead><tr><th>Micronutriente</th><th>Función biológica</th><th>Impacto en el deporte</th><th>Fuentes</th></tr></thead>
+    <tbody>
+     <tr><td>Calcio</td><td>Densidad ósea</td><td>Previene lesiones y contrae el músculo</td><td>Lácteos, ajonjolí, fortificados</td></tr>
+     <tr><td>Hierro</td><td>Transporte de oxígeno</td><td>Previene fatiga y anemia</td><td>Carnes rojas, sangrecita, legumbres</td></tr>
+     <tr><td>Vitamina D</td><td>Fijación ósea e inmunidad</td><td>Mantiene la fuerza muscular</td><td>Sol, pescados grasos, huevo</td></tr>
+     <tr><td>Complejo B</td><td>Metabolismo de energía</td><td>Eficiencia metabólica al entrenar</td><td>Cereales integrales, carnes, huevos</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+<!-- MITOS -->
+<section id="mitos">
+ <div class="wrap">
+  <div style="text-align:center;max-width:780px;margin:0 auto 46px">
+   <span class="badge bg-r reveal">Alerta viral 🚨</span>
+   <h2 class="sec-title reveal">Mitos de redes vs. Evidencia médica</h2>
+   <p class="sec-sub reveal" style="margin:0 auto 0">Lo que se vuelve viral no siempre es cierto. Aquí enfrentamos las tendencias de TikTok e Instagram con lo que dice la medicina deportiva.</p>
+  </div>
+  <div class="cards c2">
+   <div class="myth reveal">
+    <div class="top"><span class="lbl">❌ Mito 1</span><h3>“Los carbohidratos engordan, elimínalos”</h3></div>
+    <div class="bot"><span class="lbl">✅ Evidencia</span><p>Son la fuente principal de energía de músculos y cerebro. Eliminarlos causa fatiga, pérdida de músculo, falta de concentración y mal rendimiento.</p></div>
+   </div>
+   <div class="myth reveal">
+    <div class="top"><span class="lbl">❌ Mito 2</span><h3>“Necesitas suplementos de proteína para ganar músculo”</h3></div>
+    <div class="bot"><span class="lbl">✅ Evidencia</span><p>Una dieta equilibrada con huevos, carnes magras, lácteos o legumbres cubre el 100%. Suplementos sin supervisión pueden saturar el riñón sin aportar beneficios extra.</p></div>
+   </div>
+   <div class="myth reveal">
+    <div class="top"><span class="lbl">❌ Mito 3</span><h3>“Si no sudas mucho, no estás rindiendo”</h3></div>
+    <div class="bot"><span class="lbl">✅ Evidencia</span><p>El sudor regula la temperatura, no mide la grasa quemada. Sudar de más solo deshidrata, descompensa electrolitos y baja el rendimiento.</p></div>
+   </div>
+   <div class="myth reveal">
+    <div class="top"><span class="lbl">❌ Mito 4</span><h3>“Los jugos detox limpian el cuerpo”</h3></div>
+    <div class="bot"><span class="lbl">✅ Evidencia</span><p>El hígado y los riñones ya desintoxican. Estas dietas sin proteína ni grasa provocan déficits peligrosos, pérdida de músculo y debilidad.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PLAN ENTRENAMIENTO -->
+<section id="plan" class="alt">
+ <div class="wrap">
+  <div style="text-align:center;max-width:780px;margin:0 auto 46px">
+   <span class="badge bg-n reveal">Nutrient timing</span>
+   <h2 class="sec-title reveal">Plan según tu entrenamiento</h2>
+   <p class="sec-sub reveal" style="margin:0 auto 0">Sincronizar las comidas con el ejercicio optimiza la energía, evita molestias y acelera la recuperación.</p>
+  </div>
+  <div class="timeline">
+   <div class="tl-item reveal"><div class="pin">🔋</div><div class="box"><h4>Antes · Cargar energía</h4><p><strong>2-3 h antes:</strong> comida principal con muchos carbohidratos complejos y proteína moderada; baja en grasa y fibra. <strong>30-45 min antes (opcional):</strong> una fruta madura para glucosa rápida.</p></div></div>
+   <div class="tl-item reveal"><div class="pin">🏃</div><div class="box"><h4>Durante · Mantener</h4><p><strong>Menos de 60 min:</strong> solo agua, a sorbos cada 15-20 min. <strong>Más de 60 min o alta intensidad:</strong> repone sodio y glucosa para evitar calambres y fatiga.</p></div></div>
+   <div class="tl-item reveal"><div class="pin">💪</div><div class="box"><h4>Después · Recuperar</h4><p><strong>Primeras 2 h:</strong> combina proteína (síntesis muscular) con carbohidratos (reponer glucógeno). Rehidrata hasta recuperar el líquido perdido.</p></div></div>
+  </div>
+  <div class="tbl-wrap reveal" style="margin-top:40px">
+   <table>
+    <thead><tr><th>Momento</th><th>Objetivo biológico</th><th>Ajuste del menú</th></tr></thead>
+    <tbody>
+     <tr><td>Pre-entreno (2-3 h)</td><td>Cargar depósitos de energía</td><td>Priorizar carbohidratos; moderar grasa y fibra</td></tr>
+     <tr><td>Snack pre (30 min)</td><td>Energía rápida</td><td>Carbohidratos simples de fácil digestión</td></tr>
+     <tr><td>Durante</td><td>Prevenir deshidratación</td><td>Agua o bebida con electrolitos según duración</td></tr>
+     <tr><td>Post-entreno</td><td>Reparar y reponer</td><td>Proteína de calidad + carbohidratos</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+<!-- MENUS DIARIOS -->
+<section id="diaria">
+ <div class="wrap">
+  <div style="text-align:center;max-width:780px;margin:0 auto 40px">
+   <span class="badge bg-v reveal">Nutrición diaria</span>
+   <h2 class="sec-title reveal">Tus menús del día</h2>
+   <p class="sec-sub reveal" style="margin:0 auto 0">Ajusta las porciones a tu cuerpo y cambia la carga de carbohidratos según si entrenas o descansas.</p>
+  </div>
+  <div class="perfiles">
+   <div class="meal reveal"><div class="mh" style="background:linear-gradient(120deg,#2fae60,#1e7a42)">🪶 Perfil Ligero</div><div class="mb"><p style="font-weight:700">45-55 kg · 150-160 cm</p><div class="prop">Mantenimiento y desarrollo progresivo</div></div></div>
+   <div class="meal reveal"><div class="mh" style="background:linear-gradient(120deg,#ff8a3c,#e86b1a)">🏅 Perfil Medio</div><div class="mb"><p style="font-weight:700">56-68 kg · 161-172 cm</p><div class="prop">Cobertura de alto gasto energético</div></div></div>
+   <div class="meal reveal"><div class="mh" style="background:linear-gradient(120deg,#7c5cd6,#5a3fb0)">💪 Perfil Robusto</div><div class="mb"><p style="font-weight:700">69-80 kg · 173-185 cm</p><div class="prop">Soporte de gran masa muscular</div></div></div>
+  </div>
+  <div class="tabs reveal">
+   <button class="tab active" data-g="dia" data-t="sin">😴 Día SIN entreno</button>
+   <button class="tab" data-g="dia" data-t="con">🔥 Día CON entreno</button>
+  </div>
+  <div class="tab-panel active" data-g="dia" data-p="sin">
+   <p style="text-align:center;color:var(--gris);margin-bottom:26px;font-weight:600">Restauración y crecimiento: menos carbohidratos, proteína y grasas saludables altas.</p>
+   <div class="cards c3">
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#2fae60,#1e7a42)">🌅 Desayuno</div><div class="mb"><ul><li>Huevos revueltos o tibios</li><li>Pan integral</li><li>Palta y queso</li><li>Fruta entera</li></ul><div class="prop">25% Proteína · 25% Carbo · 50% Grasa/Fruta</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#ffc43d,#e0a615)">☕ Snack mañana</div><div class="mb"><ul><li>Yogur natural o griego</li><li>Puñado de frutos secos</li><li>Infusión / agua</li></ul><div class="prop">Proteína rápida + grasas saludables</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#ff8a3c,#e86b1a)">🍽️ Almuerzo</div><div class="mb"><ul><li>Pechuga de pollo o pescado blanco</li><li>Lentejas y arroz</li><li>Ensalada fresca variada</li><li>Aceite de oliva</li></ul><div class="prop">50% Proteína · 25% Verduras · 25% Carbo</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#2f9bd4,#1b6e9a)">🥤 Snack tarde</div><div class="mb"><ul><li>Batido de leche</li><li>Semillas de chía</li></ul><div class="prop">Hidratación + micronutrientes</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#7c5cd6,#5a3fb0)">🌙 Cena</div><div class="mb"><ul><li>Filete de pescado</li><li>Verduras al vapor</li><li>Camote, papa o arroz</li></ul><div class="prop">50% Proteína · 25% Verduras · 25% Carbo ligero</div></div></div>
+   </div>
+  </div>
+  <div class="tab-panel" data-g="dia" data-p="con">
+   <p style="text-align:center;color:var(--gris);margin-bottom:26px;font-weight:600">Máxima energía: los carbohidratos suben para llenar el glucógeno y sostener el gasto.</p>
+   <div class="cards c3">
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#2fae60,#1e7a42)">🌅 Desayuno</div><div class="mb"><ul><li>Avena cocida con leche</li><li>Plátano en rodajas</li><li>Cucharada de miel</li><li>Huevos pasados</li></ul><div class="prop">50% Carbo de carga · 25% Proteína · 25% Fruta</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#ffc43d,#e0a615)">🥪 Snack mañana</div><div class="mb"><ul><li>Sandwich de pavo</li><li>Pan integral y queso</li><li>Fruta</li></ul><div class="prop">Carbohidratos + proteína moderada</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#ff8a3c,#e86b1a)">🍽️ Almuerzo</div><div class="mb"><ul><li>Carne magra de res, pollo o atún</li><li>Arroz, pasta o papas</li><li>Ensalada mixta</li><li>Aceituna o palta</li></ul><div class="prop">40% Carbo · 40% Proteína · 20% Verduras</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#2f9bd4,#1b6e9a)">🍌 Snack tarde</div><div class="mb"><ul><li>Plátano con mantequilla de maní</li><li>Yogur con granola</li></ul><div class="prop">Energía disponible antes/después de entrenar</div></div></div>
+    <div class="meal"><div class="mh" style="background:linear-gradient(120deg,#7c5cd6,#5a3fb0)">🌙 Cena</div><div class="mb"><ul><li>Pescado, pollo o huevos</li><li>Arroz, quinua o camote</li><li>Verduras variadas</li></ul><div class="prop">40% Carbo de recuperación · 40% Proteína · 20% Verduras</div></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+<!-- HIDRATACION -->
+<section id="hidratacion" class="alt">
+ <div class="wrap">
+  <div class="sec-split" style="margin-bottom:50px">
+   <div class="reveal">
+    <span class="badge bg-a">Pilar invisible</span>
+    <h2 class="sec-title">Hidratación</h2>
+    <p class="sec-sub" style="margin-bottom:16px">El cuerpo adolescente es 60-65% agua. Al sudar pierdes agua y minerales; si no los repones, caen la fuerza, la resistencia y hasta tus reflejos.</p>
+    <ul style="list-style:none">
+     <li style="padding:7px 0 7px 28px;position:relative;font-weight:600"><span style="position:absolute;left:0">🩸</span> Transporta glucosa y oxígeno al músculo</li>
+     <li style="padding:7px 0 7px 28px;position:relative;font-weight:600"><span style="position:absolute;left:0">🌡️</span> Regula la temperatura corporal</li>
+     <li style="padding:7px 0 7px 28px;position:relative;font-weight:600"><span style="position:absolute;left:0">🦴</span> Lubrica articulaciones y previene calambres</li>
+    </ul>
+    <div style="background:rgba(232,82,74,.1);border-left:5px solid var(--rojo);border-radius:12px;padding:14px 18px;margin-top:18px;font-weight:700;color:var(--rojo)">⚠️ Perder solo el 2% del peso en líquidos ya sube tu pulso, trae fatiga temprana y nubla tu mente.</div>
+   </div>
+   <div class="reveal"><img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/93e471c71f34/hidratacion.jpeg?Expires=1793887285&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=aNNh3o2DeWN7kelqZgb6tDUNxXhs6JXAeEueVl9ElaS6xb6NyTC2vxRnY0d6YuGaREt2VaeekFTTEQvSsWHzRXm3S33Ol%2BIAL8oWiTd%2FokWCgscqlBSaM5mOJYsKh3zlkZz4JrttzAFfnusXkSKqHo4Eg%2BU1lygiyLDgvRoGlzNI%2F7V4%2FuRcHvAaf5l%2FPB65kAJ%2B2XmP86hJ19n5GHn55p%2Fh%2FkMZCoI7UqNCK4%2BEJk2een4kNLok70AD%2Fpj5ndpIrvD%2ByYmnUjnWcUWhtmWjysHtprGur3dOJH9vNLzfXT9M5U1t6Xk3kJ6mU6B7%2FakhgP5CSu%2BWnmE6LVfFvyzzVg%3D%3D" alt="Hidratación"></div>
+  </div>
+  <div class="hyd-cards" style="margin-bottom:40px">
+   <div class="hyd reveal"><div style="font-size:1.6rem">⏰</div><h3 style="margin:6px 0">Antes (2-3 h)</h3><div class="big">400-600 ml</div><p style="color:var(--gris);font-weight:600">Agua sola. Empieza bien hidratado.</p></div>
+   <div class="hyd reveal"><div style="font-size:1.6rem">🏃</div><h3 style="margin:6px 0">Durante (c/20-25 min)</h3><div class="big">150-250 ml</div><p style="color:var(--gris);font-weight:600">Agua (&lt;60 min) o electrolitos (&gt;60 min).</p></div>
+   <div class="hyd reveal"><div style="font-size:1.6rem">💧</div><h3 style="margin:6px 0">Después</h3><div class="big">1.25-1.5 L</div><p style="color:var(--gris);font-weight:600">Por cada kg perdido. Agua, agua de coco o isotónica.</p></div>
+  </div>
+  <div class="cards c2 reveal">
+   <div class="card" style="border-top:5px solid var(--azul)"><div class="ico bg-a">💧</div><h3>Agua sola</h3><p>Es suficiente para el día a día, la jornada escolar y entrenamientos de intensidad baja o moderada que duren menos de 60 minutos.</p></div>
+   <div class="card" style="border-top:5px solid var(--naranja)"><div class="ico bg-n">🧃</div><h3>Bebidas isotónicas</h3><p>Solo cuando el entrenamiento supera 60 min de alta intensidad o hace mucho calor. Aportan sodio y carbohidratos de absorción rápida.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- SUENO -->
+<section id="sueno">
+ <div class="wrap">
+  <div class="sec-split" style="margin-bottom:50px">
+   <div class="reveal"><img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/46682b70aae8/sueno.jpeg?Expires=1793887311&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=mAduIgmO4uCcOZm0SZmipe06BYz3iGAz2jpRGHUqgwl5KOxTxODaOJTJFms%2F%2FsU6qI9wIK9A%2F%2Fy%2Bkgp0%2FFiLYuJbJ3AzzzKPxWFLuaO3ro%2BxLfU7efpw0l6TtEb431tqMhpF98YYMImqUl7sFv5BRAtNLIIazgN5YghlrreM2u9Ppi%2BOqCV78uyOJDXZ8bj%2BBbg111DMZCM8tyYL7GuBFh9h4Vlf%2F65p1Ahi4%2FjSPFoQu2SMCFgkSPG5PhJZ2jQCDeHq2Vs%2FcMYuTQYVZyC%2F2adDIMPgEXmjR8u4C0K2COXkUrRzJRdn0I0WalEAOpn7P4ST0kBfvs32d31MrgyPhA%3D%3D" alt="Sueño y descanso"></div>
+   <div class="reveal">
+    <span class="badge bg-m">La clave invisible</span>
+    <h2 class="sec-title">Sueño y descanso</h2>
+    <p class="sec-sub" style="margin-bottom:0">El tercer pilar. Mientras duermes profundo, el cuerpo repara tejidos, equilibra hormonas y consolida el aprendizaje motor. Necesitas <strong>8-10 horas</strong> por noche.</p>
+   </div>
+  </div>
+  <div class="cards c3" style="margin-bottom:40px">
+   <div class="card reveal"><div class="ico bg-m">🧬</div><h3>Hormona del crecimiento</h3><p>El 70% de su secreción diaria ocurre al dormir: regenera fibras, repara microrroturas y aumenta la densidad ósea.</p></div>
+   <div class="card reveal"><div class="ico bg-v">🦵</div><h3>Síntesis proteica</h3><p>Las proteínas del día se usan de forma óptima durante la noche para reconstruir el tejido dañado.</p></div>
+   <div class="card reveal"><div class="ico bg-a">🧠</div><h3>Recarga del sistema nervioso</h3><p>El cerebro recupera neurotransmisores, garantizando coordinación y reflejos rápidos al día siguiente.</p></div>
+  </div>
+  <div style="background:rgba(232,82,74,.08);border-radius:var(--rad);padding:28px;margin-bottom:40px" class="reveal">
+   <h3 style="color:var(--rojo);margin-bottom:14px">⚠️ Dormir poco te pasa factura</h3>
+   <div class="cards c3">
+    <div><strong>Más lesiones</strong><p style="color:var(--gris)">Baja la estabilidad, la propiocepción y los reflejos.</p></div>
+    <div><strong>Menos glucógeno</strong><p style="color:var(--gris)">Altera la glucosa: tus músculos guardan menos energía.</p></div>
+    <div><strong>Más cortisol</strong><p style="color:var(--gris)">Favorece la pérdida de músculo y debilita las defensas.</p></div>
+   </div>
+  </div>
+  <div class="tbl-wrap reveal">
+   <table>
+    <thead><tr><th>Estrategia</th><th>Acción práctica</th><th>Beneficio</th></tr></thead>
+    <tbody>
+     <tr><td>Horario regular</td><td>Acostarse y levantarse a la misma hora</td><td>Regula el ciclo circadiano</td></tr>
+     <tr><td>Desconexión digital</td><td>Apagar pantallas 45 min antes</td><td>No bloquea la melatonina</td></tr>
+     <tr><td>Cena ligera</td><td>Cenar 2 h antes de dormir</td><td>Evita digestiones pesadas</td></tr>
+     <tr><td>Entorno adecuado</td><td>Cuarto oscuro, silencioso y fresco</td><td>Facilita el sueño profundo</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+<!-- EVITAR -->
+<section id="evitar" class="alt">
+ <div class="wrap">
+  <div class="sec-split" style="margin-bottom:50px">
+   <div class="reveal">
+    <span class="badge bg-r">Zona de cuidado</span>
+    <h2 class="sec-title">Lo que debes limitar</h2>
+    <p class="sec-sub" style="margin-bottom:0">Ultraprocesados, pseudoalimentos y sustancias que sabotean tu rendimiento y tu desarrollo. Aprende a reconocerlos.</p>
+   </div>
+   <div class="reveal"><img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-10-06/ac37c0e045c0/ultraprocesados.jpeg?Expires=1793887316&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=DpDQ6H4r7fNFr7l%2FXQ0eu%2B1SqzmtonsLUd%2FBB1yaV%2FJiRwP2dH%2FbKlOdw967y5lSoRU6yT1C029trWXsjT%2Bn2J8M%2F6FrNNzMxia64A6KTypCJeomQvNOmcg5qxvbXObZbFBwqS7g8Vd36pRAPKJl4XNvCukBNNuCdwawjtlW4uU93lIzLo8G8U10ihuu6YbkOuPfzz6i4mVH43ea35SldChtrpCXivNRFNQfnJOIi7ZLs57M9iah3bz%2BmWVTLIPKwrVEYC0PcdNt6Z0LGA4X6cN8kKs4NJjZUfSZ2YPL9zHmenA6RDCl2Ozp9GRZ9N1av9Hh2PJ4OMNjVutg%2BMOSUQ%3D%3D" alt="Ultraprocesados"></div>
+  </div>
+  <div class="cards c2" style="margin-bottom:26px">
+   <div class="avoid-card reveal"><h3>🥤 Bebidas “Zero / Diet” y gelatinas light</h3><p>Edulcorantes acalóricos (aspartamo, sucralosa, acesulfamo K) que alteran la microbiota y desregulan el apetito.</p></div>
+   <div class="avoid-card reveal"><h3>🌭 Embutidos y carnes procesadas</h3><p>Alto en sodio, grasas de baja calidad y nitritos/nitratos. Aumentan la inflamación y retrasan la recuperación.</p></div>
+   <div class="avoid-card reveal"><h3>🥣 Cereales “light” industriales</h3><p>Procesamiento extremo: pierden fibra y se rellenan de azúcares ocultos y almidones modificados.</p></div>
+   <div class="avoid-card reveal"><h3>🦠 Chicles y masticables sintéticos</h3><p>Polioles (sorbitol, xilitol) que causan gases, distensión y molestias durante el deporte.</p></div>
+  </div>
+  <div style="background:#fff;border-radius:var(--rad);padding:28px;box-shadow:var(--sombra);margin-bottom:26px" class="reveal">
+   <h3 style="margin-bottom:10px">🔍 Azúcares con nombres ocultos</h3>
+   <p style="color:var(--gris);margin-bottom:14px">La industria disfraza el azúcar. Apréndete estos nombres:</p>
+   <div class="hero-tags">
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Jarabe de maíz (JMAF)</span>
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Maltodextrina</span>
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Dextrina</span>
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Néctares</span>
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Sirope / jarabes</span>
+    <span class="tag" style="border-color:rgba(232,82,74,.3);color:var(--rojo)">Azúcar de coco o caña</span>
+   </div>
+  </div>
+  <div class="cards c2" style="margin-bottom:40px">
+   <div class="avoid-card reveal"><h3>🍺 Alcohol</h3><p>Inhibe la síntesis proteica (vía mTOR) hasta un 30%, deshidrata y arruina el sueño profundo.</p></div>
+   <div class="avoid-card reveal"><h3>🚬 Tabaco y vapeo</h3><p>La nicotina reduce el VO₂ máx y causa vasoconstricción, limitando el flujo de sangre a los músculos.</p></div>
+  </div>
+  <div class="tbl-wrap reveal">
+   <table>
+    <thead><tr><th>Producto</th><th>Componentes a evitar</th><th>Impacto fisiológico</th></tr></thead>
+    <tbody>
+     <tr><td>Gaseosas Zero/Diet</td><td>Edulcorantes, ácido fosfórico</td><td>Disbiosis y desmineralización ósea</td></tr>
+     <tr><td>Embutidos</td><td>Nitritos, sodio, grasas saturadas</td><td>Inflamación y retención de líquidos</td></tr>
+     <tr><td>Azúcares ocultos</td><td>JMAF, maltodextrina</td><td>Picos de insulina y grasa visceral</td></tr>
+     <tr><td>Vapeo y nicotina</td><td>Propilenglicol, nicotina</td><td>Baja el VO₂ máx, vasoconstricción</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+<!-- MATRIZ -->
+<section id="matriz">
+ <div class="wrap">
+  <div style="text-align:center;max-width:800px;margin:0 auto 40px">
+   <span class="badge bg-v reveal">Herramienta práctica</span>
+   <h2 class="sec-title reveal">Matriz de intercambio de alimentos</h2>
+   <p class="sec-sub reveal" style="margin:0 auto 0">Combinaciones flexibles y equivalentes por momento del día. Elige lo que tengas a mano sin esquemas rígidos.</p>
+  </div>
+  <div class="tabs reveal">
+   <button class="tab active" data-g="mx" data-t="des">🌅 Desayuno</button>
+   <button class="tab" data-g="mx" data-t="snk">🍎 Recreo</button>
+   <button class="tab" data-g="mx" data-t="alm">🍽️ Almuerzo</button>
+   <button class="tab" data-g="mx" data-t="cen">🌙 Cena</button>
+  </div>
+  <div class="tab-panel active" data-g="mx" data-p="des">
+   <p style="text-align:center;color:var(--gris);margin-bottom:22px;font-weight:600">Proteína + carbohidrato complejo + grasa saludable. Inicia con 250 ml de agua tibia con limón.</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Categoría</th><th>Opciones</th><th>Cantidad</th></tr></thead><tbody>
+    <tr><td rowspan="3">Proteínas</td><td>Huevos enteros</td><td>4 unidades</td></tr>
+    <tr><td>Yogur griego / natural + canela</td><td>380-420 g</td></tr>
+    <tr><td>Pollo, res magra o cerdo magro</td><td>130 g</td></tr>
+    <tr><td rowspan="3">Carbohidratos</td><td>Avena o quinoa (en crudo)</td><td>40 g</td></tr>
+    <tr><td>Frutas libres</td><td>120 g</td></tr>
+    <tr><td>Pan / tostadas integrales</td><td>40 g / 2 u</td></tr>
+    <tr><td rowspan="3">Grasas</td><td>Palta</td><td>80 g</td></tr>
+    <tr><td>Aceitunas / frutos secos</td><td>40 g / 10 g</td></tr>
+    <tr><td>Aceite de oliva extra virgen</td><td>1 cucharada</td></tr>
+   </tbody></table></div>
+  </div>
+  <div class="tab-panel" data-g="mx" data-p="snk">
+   <p style="text-align:center;color:var(--gris);margin-bottom:22px;font-weight:600">Proteína + carbohidrato de digestión rápida/moderada para la jornada escolar.</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Categoría</th><th>Opciones</th><th>Cantidad</th></tr></thead><tbody>
+    <tr><td rowspan="3">Proteínas</td><td>Huevos enteros</td><td>3 unidades</td></tr>
+    <tr><td>Yogur natural / jamón de pavo</td><td>300 / 130 g</td></tr>
+    <tr><td>Queso fresco magro</td><td>90 g</td></tr>
+    <tr><td rowspan="3">Carbohidratos</td><td>Frutas libres picadas</td><td>300 g</td></tr>
+    <tr><td>Avena o quinoa (en crudo)</td><td>90 g</td></tr>
+    <tr><td>Pan integral / tostadas</td><td>80 g / 4 u</td></tr>
+   </tbody></table></div>
+  </div>
+  <div class="tab-panel" data-g="mx" data-p="alm">
+   <p style="text-align:center;color:var(--gris);margin-bottom:22px;font-weight:600">Proteína magra + carbohidrato complejo + vegetales + grasa saludable. Termina con fruta rica en vitamina C.</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Categoría</th><th>Opciones</th><th>Cantidad</th></tr></thead><tbody>
+    <tr><td rowspan="3">Proteínas</td><td>Pollo a la plancha o guisado</td><td>150-180 g</td></tr>
+    <tr><td>Pescado (bonito, jurel, trucha)</td><td>150-180 g</td></tr>
+    <tr><td>Res magra, pavo, sangrecita o hígado</td><td>150-180 g</td></tr>
+    <tr><td rowspan="3">Carbohidratos</td><td>Arroz cocido (blanco o integral)</td><td>200-250 g</td></tr>
+    <tr><td>Papa, camote o yuca sancochada</td><td>200-260 g</td></tr>
+    <tr><td>Menestras o quinoa cocida</td><td>180-230 g</td></tr>
+    <tr><td rowspan="2">Grasas y veg.</td><td>Ensalada fresca variada</td><td>1 plato mediano</td></tr>
+    <tr><td>Palta / aceite de oliva</td><td>60-80 g / 1 cda</td></tr>
+   </tbody></table></div>
+  </div>
+  <div class="tab-panel" data-g="mx" data-p="cen">
+   <p style="text-align:center;color:var(--gris);margin-bottom:22px;font-weight:600">Proteína magra + vegetales + carbohidrato modulado según la intensidad del día.</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Categoría</th><th>Opciones</th><th>Cantidad</th></tr></thead><tbody>
+    <tr><td rowspan="3">Proteínas</td><td>Pollo, pescado o cerdo</td><td>180 g</td></tr>
+    <tr><td>Res, hígado o carne molida</td><td>180 g</td></tr>
+    <tr><td>Kéfir / yogur griego natural</td><td>410-430 g</td></tr>
+    <tr><td rowspan="2">Carbo · días de fuerza</td><td>Arroz, camote, papa, fideos</td><td>320-340 g</td></tr>
+    <tr><td>Plátano, olluco, yuca o fruta</td><td>320-350 g</td></tr>
+    <tr><td rowspan="2">Carbo · días de descanso</td><td>Arroz, camote, papa, fideos</td><td>130-150 g</td></tr>
+    <tr><td>Plátano, olluco, yuca o fruta</td><td>130-160 g</td></tr>
+   </tbody></table></div>
+  </div>
+  <p style="text-align:center;color:var(--gris);margin-top:24px;font-weight:600">🫖 Acompaña siempre con &gt;500 ml de agua o infusiones naturales sin endulzar.</p>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <div class="wrap">
+  <div class="fg">
+   <div>
+    <div class="logo" style="color:#fff"><span class="dot">⚡</span> Futuros Campeones</div>
+    <p style="margin-top:14px;max-width:360px">Guía de nutrición deportiva y desarrollo físico en la adolescencia. Ciencia real para jóvenes atletas de 13 a 17 años.</p>
+    <div class="ods">🌍 ODS 3 · Salud y Bienestar</div>
+   </div>
+   <div>
+    <h4>Secciones</h4>
+    <a href="#macro">Macronutrientes</a>
+    <a href="#micro">Micronutrientes</a>
+    <a href="#mitos">Mitos vs. Ciencia</a>
+    <a href="#plan">Plan de entreno</a>
+    <a href="#diaria">Menús del día</a>
+   </div>
+   <div>
+    <h4>Más</h4>
+    <a href="#hidratacion">Hidratación</a>
+    <a href="#sueno">Sueño y descanso</a>
+    <a href="#evitar">Qué evitar</a>
+    <a href="#matriz">Matriz de intercambio</a>
+   </div>
+  </div>
+  <div class="copy">
+   <p>Proyecto PAI/MYP · Bachillerato Internacional — Adrián Marcelo Mosqueira Peláez</p>
+   <p style="margin-top:6px;font-size:.82rem">Contexto global: Identidades y relaciones · Salud y Bienestar. Esta guía es educativa y no reemplaza la indicación de un profesional de salud.</p>
+  </div>
+ </div>
+</footer>
+<button id="top" aria-label="Volver arriba">↑</button>
+<script>
+// burger
+const burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+// tabs (grouped by data-g)
+document.querySelectorAll('.tab').forEach(t=>{
+ t.addEventListener('click',()=>{
+  const g=t.dataset.g,target=t.dataset.t;
+  document.querySelectorAll('.tab[data-g="'+g+'"]').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelectorAll('.tab-panel[data-g="'+g+'"]').forEach(p=>p.classList.toggle('active',p.dataset.p===target));
+ });
+});
+// reveal on scroll
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// back to top
+const topBtn=document.getElementById('top');
+window.addEventListener('scroll',()=>{topBtn.classList.toggle('show',window.scrollY>500)});
+topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
